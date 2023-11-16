@@ -1,14 +1,9 @@
-#link1 = "https://www.google.com/search?q=chicken&oq=chicken&gs_lcrp=EgZjaHJvbWUqEAgAEAAYgwEY4wIYsQMYgAQyEAgAEAAYgwEY4wIYsQMYgAQyDQgBEC4YgwEYsQMYgAQyBwgCEAAYgAQyBwgDEC4YgAQyDQgEEAAYgwEYsQMYgAQyDQgFEAAYgwEYsQMYgAQyCggGEAAYsQMYgAQyDQgHEAAYgwEYsQMYgAQyDQgIEAAYgwEYsQMYgAQyDQgJEAAYgwEYsQMYgATSAQgyNDYwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8"
-#link2 = "https://www.google.com/search?q=cow&oq=cow+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTISCAEQLhgUGIMBGIcCGLEDGIAEMg0IAhAAGIMBGLEDGIAEMgoIAxAAGLEDGIAEMhMIBBAuGIMBGK8BGMcBGLEDGIoFMgcIBRAAGIAEMg0IBhAAGIMBGLEDGIoFMgcIBxAAGIAEMgoICBAuGLEDGIAEMgcICRAAGI8C0gEIMzc5OWowajmoAgCwAgA&sourceid=chrome&ie=UTF-8"
-
 
 import qrcode
 import random
 import sqlite3
 
-#var = ""
-#linkBank = [link1,link2]
-#var = linkBank[0 + random.randint(0,1)] 
+
 
 connection = sqlite3.connect('linkdb.db')
 cursor = connection.cursor()
@@ -19,7 +14,7 @@ randval = cursor.fetchone()[0]
 
 connection.close()
 
-# Create a QR code instance
+# Creates the QR code instance
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -27,15 +22,15 @@ qr = qrcode.QRCode(
     border=4,
 )
 
-# Add data to the QR code
+# Adds data to the QR code
 data = randval
 qr.add_data(data)
 qr.make(fit=True)
 
-# Create an image from the QR code instance
+# Creates an image from the QR code instance
 img = qr.make_image(fill_color="black", back_color="white")
 
-# Save the image to a specific folder
+# Saves image to my img folder
 folder_path = "C:\\Users\\micha\\OneDrive\\Documents\\Desktop\\scanNlearn\\img_holder"
 file_name = "qrcode.png"
 img_path = f"{folder_path}/{file_name}"

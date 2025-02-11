@@ -1,4 +1,3 @@
-
 import qrcode
 import random
 import sqlite3

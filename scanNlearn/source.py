@@ -1,7 +1,7 @@
 import qrcode
 import random
 import sqlite3
-
+import os
 
 
 connection = sqlite3.connect('linkdb.db')
@@ -30,7 +30,12 @@ qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
 
 # Saves image to my img folder
-folder_path = "C:\\Users\\micha\\OneDrive\\Documents\\Desktop\\scanNlearn\\img_holder"
+
+project_root = os.path.dirname(os.path.abspath(__file__))
+
+# Build path to QR code directory
+folder_path = os.path.join(project_root, 'include,')
+
 file_name = "qrcode.png"
 img_path = f"{folder_path}/{file_name}"
 

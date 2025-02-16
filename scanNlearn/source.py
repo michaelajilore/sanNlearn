@@ -34,7 +34,7 @@ img = qr.make_image(fill_color="black", back_color="white")
 project_root = os.path.dirname(os.path.abspath(__file__))
 
 # Build path to QR code directory
-folder_path = os.path.join(project_root, 'include,')
+folder_path = os.path.join(project_root, 'path,')
 
 file_name = "qrcode.png"
 img_path = f"{folder_path}/{file_name}"
